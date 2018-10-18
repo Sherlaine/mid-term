@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WTF MAP</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 70%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <input id="pac-input" class="controls" type="text" placeholder="search!">
+    <div id="map"></div>
+    <div>
+      <button class="add">Add</button>
+      <button>Remove</button>
+    </div>
+    <script>
+
+      // Global Variables. May need to refactor this code (refer to Spencer's explanation)
+      var searchLocation;
+      var map;
+
+      // Initialize and add the map
+      function initMap() {
+
+        // The location of center of City Vancouver
+        const vancouver = {lat: 49.246292, lng: -123.116226};
+
+        // The map, centered at Vancouver at a specified zoom of 12
+        map = new google.maps.Map(document.getElementById('map'), {zoom: 12, center: vancouver});
+
+        // Hard coded marker, positioned at center of City of Vancouver
+        const marker = new google.maps.Marker({position: vancouver, map: map});
+        // Location of kitchen called The Door is Open
+        const doorIsOpen = {lat: 49.282622, lng: -123.095606};
+        // Hard coded marker, positioned at The Door is Open
+        const marker1 = new google.maps.Marker({position: doorIsOpen, map: map});
+
+        // Search box and input
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+
+        // Event listener that saves coordinates to searchLocation upon selecting a destination
+        searchBox.addListener('places_changed', function() {
+            console.log('new search!!!!');
+            var places   = searchBox.getPlaces();
+            var location = places[0].geometry.location;
+
+
+            // Proof of latitude of longitude in console
+            console.log('location lat', location.lat());
+            console.log('location lng', location.lng());
+
+            // Search coordinates stored in this variable
+            searchLocation = [location.lat(), location.lng()];
+        });
+
+
+      }
+
+      // Marker adding functionality, but does not add marker to map
+      function addMarker(lat, lng){
+         myLatlng = new google.maps.LatLng(lat, lng);
+         // Will be able to add more details about marker (ex.'Hello PLUTO!'). Research documentation
+         marker = new google.maps.Marker({position: myLatlng, map: map, title: 'Hello PLUTO!'});
+
+      }
+
+      // Function that posts marker to map when button is clicked
+      $(function addMarkerToMap() {
+        $('button.add').on('click', function(lat, long) {
+          // Proof that button works, will show in console
+          console.log('will try to add point');
+
+          // Adds marker when button is clicked
+          addMarker(searchLocation[0], searchLocation[1]);
+        })
+      })
+
+      // SOMEWHERE HERE WE NEED TO ADD FUNCTIONALITY WHERE WE CAN REMOVE A SELECTED MARKER
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIEKODM631oJ7SxhK4QU3sq8_nNVt63sY&callback=initMap&libraries=places"
+    async defer></script>
+  </body>
+</html>
