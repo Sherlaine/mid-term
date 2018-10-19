@@ -77,7 +77,11 @@
       function addMarker(lat, lng){
          myLatlng = new google.maps.LatLng(lat, lng);
          // Will be able to add more details about marker (ex.'Hello PLUTO!'). Research documentation
-         marker = new google.maps.Marker({position: myLatlng, map: map, title: 'Hello PLUTO!'});
+         marker = new google.maps.Marker({
+           position: myLatlng, 
+           map: map,
+           title: 'Hello LAINE!'
+           });
 
       }
 
