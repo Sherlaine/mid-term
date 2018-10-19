@@ -3,17 +3,21 @@
 const express = require('express');
 const router  = express.Router();
 
-const markers = 
+const maps = 
   [{
-    id: 1,
-    name: 'Linda',
-    lat: 70,
-    lng: 40
+    user_id: 1,
+    title: 'Bakeries',
+    markers: {
+      marker_id: {
+        lat: 70,
+        lng: 40
+      }
+    }
   }]
 
 module.exports = () => {
   router.get("/", (req, res) => {
-    res.send(markers);
+    res.send(maps);
   });
   
   return router;

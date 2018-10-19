@@ -15,8 +15,9 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const usersRoutes  = require("./routes/users");
 const markerRoutes = require("./routes/markers");
+const mapRoutes    = require("./routes/maps");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -41,6 +42,9 @@ app.use("/api/users", usersRoutes(knex));
 
 // import marker routes
 app.use("/api/markers", markerRoutes());
+
+// import map routes 
+app.use("/api/maps", mapRoutes());
 
 // Home page
 app.get("/", (req, res) => {
