@@ -3,15 +3,15 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
+const users =
+  [{
+    id: 1,
+    name: 'Linda'
+  }]
 
+module.exports = () => {
   router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
+    res.send(users);
   });
 
   return router;
