@@ -9,3 +9,7 @@
     height: 400px;
     background-color: grey;
   }
+
+  #pac-input{
+      width: 45%;
+  }
