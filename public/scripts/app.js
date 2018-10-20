@@ -10,16 +10,10 @@ $(document).ready(function () {
 <<<<<<< HEAD
   });;
 
- 
-});
-$('button#dumpster-heaven').on('click', function (lat, long) {
-  console.log("dumpster button works")
-} )
-// $(function addMarkerToMap() {
-//   $('button.add').on('click', function (lat, long) {
-//     // Proof that button works, will show in console
-//     console.log('will try to add point');
 
+});
+
+<<<<<<< HEAD
 //     console.log(addMarker);
 //     // Adds marker when button is clicked
 //     addMarker(searchLocation[0], searchLocation[1]);
@@ -40,3 +34,6 @@ const $list = $("<li>").appendTo($orderedList);
 const $map = $("<button>").addClass("btn btn-primary mx-auto").appendTo($list);
 const $lineBreak = $("<br>").appendTo($yourMaps);
 >>>>>>> frontend_styles
+=======
+
+>>>>>>> maps_bug

@@ -1,7 +1,7 @@
 // Global Variables. May need to refactor this code (refer to Spencer's explanation)
 let searchLocation;
 let map;
-let allMyMarkers = [];
+let allMyMarkers = []; // used in clearMarkers
 
 
 var cheating_marker_data = {
@@ -29,7 +29,7 @@ function initMap() {
   );
 
   // Search box and input
-  let input = document.getElementById('pac-input');
+  let input = document.getElementById('pac-input'); // creates the search box and links to the UI element
   let searchBox = new google.maps.places.SearchBox(input);
 
   // Event listener that saves coordinates to searchLocation upon selecting a destination
@@ -43,13 +43,25 @@ function initMap() {
     console.log('location lat', location.lat());
     console.log('location lng', location.lng());
 
-    // Search coordinates stored in this variable
+    // Search COORDINATES STORED in this variable
     searchLocation = [location.lat(), location.lng()];
   });
 }
 
+<<<<<<< HEAD
+=======
+// a location called Door Is Open to use to test marker functions below
+// replace with dynamic code
+const doorIsOpen = {
+  lat: 49.282622,
+  lng: -123.095606
+};
+
+>>>>>>> maps_bug
 // Function that posts marker to map when button is clicked
+// This Function works on the CLICKING OF "ADD BUTTON ----"
 $(function addMarkerToMap() {
+<<<<<<< HEAD
     $('button#add').on('click', function (lat, long) {
       // Proof that button works, will show in console
       console.log('will try to add point');
@@ -82,7 +94,28 @@ function addDumpster() {
   addMarker(doorIsOpen.lat, doorIsOpen.lng)
 }
 
+=======
+    $('button#add').on('click', function (event, lat, long) {
+      event.preventDefault();
+
+      // Proof that button works, will show in console
+      //console.log('This is a test button will try to add point');
+
+      //console.log(addMarker);
+      // Adds marker when button is clicked
+      //IT ACTUALY PLACES THE MARKER ON THE MAP
+      addMarker(searchLocation[0], searchLocation[1]);
+    })
+  $('button#dumpster-heaven').on('click', function () {
+    addDumpster()
+  })
+})
+
+
+// provides lat and long to add marker to addMarkerToMap function
+>>>>>>> maps_bug
 function addMarker(lat, lng) {
+  console.log("clicked add button");
   console.log("adding a marker at ", lat, lng);
   var marker = new google.maps.Marker({
     position: {
@@ -91,20 +124,33 @@ function addMarker(lat, lng) {
     },
     map: map,
   });
-  allMyMarkers.push(marker);
+  // allMyMarkers.push(marker);
+  marker.setMap(map)
+}
+
+// to add marker when Dumpster Haven button is clicked
+function addDumpster() {
+  console.log("dumpster button works")
+  console.log(doorIsOpen.lat, doorIsOpen.lng)
+  addMarker(doorIsOpen.lat, doorIsOpen.lng)
 }
 
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 // REMOVE A SELECTED MARKER
 >>>>>>> frontend_styles
+=======
+
+>>>>>>> maps_bug
 function clearMarkers() {
   for(var i = 0; i < allMyMarkers.length; i++) {
     allMyMarkers[i].setMap(null);
   }
 }
 
+<<<<<<< HEAD
 function getMarkersByMapId(id, callback) {
   //// TOOOOOOTALLY hardcoded cheating bullshit
   if (cheating_marker_data[id]) {
@@ -128,3 +174,9 @@ function loadMapById(id) {
     }
   })
 }
+=======
+
+
+
+
+>>>>>>> maps_bug
