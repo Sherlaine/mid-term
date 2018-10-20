@@ -67,7 +67,7 @@ function addDumpster() {
 }
 
 
-lololololo
+
 function addMarker(lat, lng) {
   console.log("adding a marker at ", lat, lng);
   var marker = new google.maps.Marker({
@@ -79,7 +79,8 @@ function addMarker(lat, lng) {
   });
   allMyMarkers.push(marker);
 }
-aaaahhHHhhh!
+
+
 function clearMarkers() {
   for(var i = 0; i < allMyMarkers.length; i++) {
     allMyMarkers[i].setMap(null);
