@@ -87,4 +87,8 @@ function clearMarkers() {
   }
 }
 
+$('.btn ban-primary mx-auto').on('click', function(){
+  preventDefault();
+})
+
 // SOMEWHERE HERE WE NEED TO ADD FUNCTIONALITY WHERE WE CAN REMOVE A SELECTED MARKER
