@@ -98,66 +98,71 @@
   <section id="projects" class="projects-section bg-light">
     <div class="container">
       <!-- Featured Map -->
-      <div class="row align-items-top no-gutters mb-4 mb-lg-5">
-        <div class="project-text w-100 my-auto text-center text-lg-right">
-        </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left">
+      
+        <div class="row align-items-top no-gutters mb-4 mb-lg-5">
+          <div class="project-text w-100 my-auto text-center text-lg-right">
+          </div>
+          <div class="col-xl-4 col-lg-5">
+            <div class="featured-text text-center text-lg-left">
             <h4>Your Maps</h4>
-            <ol>
-              <li><button id="dumpster-heaven" class="btn btn-primary mx-auto">Dumpster Heaven</button></li>
-              <br>
-              <li><button id= "bakery" class="btn btn-primary mx-auto">Bakeries</button></li>
-              <br>
-              <li><button id="restaurants" class="btn btn-primary mx-auto">Restaurants</button>
-              </li>
-          </div>
 
-          <br>
-
-          <div class="featured-text text-center text-lg-left">
-            <h4>Other Freegan's Maps</h4>
-            <ol>
-              <li>
-                <button id="vegan-janet" class="btn btn-primary mx-auto">Vegan Janet</button>
-              </li>
+            <section id="your-maps">
+              <ol>
+                <li>
+                  <button class="btn btn-primary mx-auto">Dumpster Heaven</button>
+                </li>
+              </ol>  
               <br>
-              <li>
-                <button id="trash-panda" class="btn btn-primary mx-auto">Trash Panda Bliss</button>
-              </li>
-            </ol>
+            </section>
           </div>
-          <br>
-          <div class="featured-text text-center text-lg-left">
-            <h4>Favourite Maps</h4>
-            <ol>
-              <li>
-                <button id="east-van" class="btn btn-primary mx-auto">East Van Dump Life</button>
-              </li>
-              <br>
-              <li>
-                <button id="gastown-trash" class="btn btn-primary mx-auto">Gastown Trash Party</button>
-              </li>
-            </ol>
-          </div>
+      
+      <br>
+      <!-- Other Lists that we leave here -->
+        <div class="featured-text text-center text-lg-left">
+          <h4>Other Freegan's Maps</h4>
+          <ol>
+            <li>
+              <button id="vegan-janet" class="btn btn-primary mx-auto">Vegan Janet</button>
+            </li>
+            <br>
+            <li>
+              <button id="trash-panda" class="btn btn-primary mx-auto">Trash Panda Bliss</button>
+            </li>
+          </ol>
         </div>
-
-        <!-- Google MAP API and buttons -->
-
-        <div class="col-xl-8 col-lg-7">
-          <h4 class="title-map">Your Map Name</h4>
-          <form class="form-inline d-flex">
-            <input id="pac-input" class="controls form-control" type="text" placeholder="search">
-<button id="add" class="btn ban-primary mx-auto">Add Point</button>
-            <button class="remove btn ban-primary mx-auto">Remove Point</button>
-          </form>
-          <div id="map">
-          </div>
-          <button class="delete btn ban-primary mx-auto">Delete Map</button>
+        <br>
+        <div class="featured-text text-center text-lg-left">
+          <h4>Favourite Maps</h4>
+          <ol>
+            <li>
+              <button id="east-van" class="btn btn-primary mx-auto">East Van Dump Life</button>
+            </li>
+            <br>
+            <li>
+              <button id="gastown-trash" class="btn btn-primary mx-auto">Gastown Trash Party</button>
+            </li>
+          </ol>
         </div>
+    </div>
+
+    <!-- Google MAP API and buttons -->
+
+    <div class="col-xl-8 col-lg-7">
+      <h4 class="title-map">Your Map Name</h4>
+      <form class="form-inline d-flex">
+        <input id="pac-input" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="search">
+        <button id="add" class="btn ban-primary mx-auto">Add Point</button>
+        <button id="remove" class="btn ban-primary mx-auto">Remove Point</button>
+      </form>
+      <div id="map">
       </div>
+      <button id="delete" class="btn ban-primary mx-auto">Delete Map</button>
+    </div>
+    </div>
     </div>
   </section>
+
+
 
   <!-- Signup Section -->
   <section id="signup" class="signup-section">

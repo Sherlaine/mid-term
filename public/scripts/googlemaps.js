@@ -3,6 +3,18 @@ let searchLocation;
 let map;
 let allMyMarkers = [];
 
+
+var cheating_marker_data = {
+  3: [
+    { lat: 49.240292, lng: -123.146226 },
+    { lat: 49.200292, lng: -123.186226 },
+  ],
+  4: [
+    { lat: 49.282622, lng: -123.095606 },
+  ]
+}
+
+
 // Initialize and add the map
 function initMap() {
   const vancouver = {
@@ -36,22 +48,26 @@ function initMap() {
   });
 }
 
-
-
 // Function that posts marker to map when button is clicked
 $(function addMarkerToMap() {
-  //   $('button#add').on('click', function (lat, long) {
-  //     // Proof that button works, will show in console
-  //     console.log('will try to add point');
+    $('button#add').on('click', function (lat, long) {
+      // Proof that button works, will show in console
+      console.log('will try to add point');
 
-  //     console.log(addMarker);
-  //     // Adds marker when button is clicked
-  //     addMarker(searchLocation[0], searchLocation[1]);
-  //   })
+      console.log(addMarker);
+      // Adds marker when button is clicked
+      addMarker(searchLocation[0], searchLocation[1]);
+    })
 
-  $('button#dumpster-heaven').on('click', function () {
-    addDumpster()
-  })
+    $('button#dumpster-heaven').on('click', function () {
+      loadMapById(3);
+    })
+    $('button#bakery').on('click', function () {
+      loadMapById(4);
+    })
+    $('button#restaurants').on('click', function () {
+      loadMapById(5);
+    })
 })
 
 
@@ -66,8 +82,6 @@ function addDumpster() {
   addMarker(doorIsOpen.lat, doorIsOpen.lng)
 }
 
-
-
 function addMarker(lat, lng) {
   console.log("adding a marker at ", lat, lng);
   var marker = new google.maps.Marker({
@@ -80,10 +94,33 @@ function addMarker(lat, lng) {
   allMyMarkers.push(marker);
 }
 
+// REMOVE A SELECTED MARKER
 function clearMarkers() {
   for(var i = 0; i < allMyMarkers.length; i++) {
     allMyMarkers[i].setMap(null);
   }
 }
 
-// SOMEWHERE HERE WE NEED TO ADD FUNCTIONALITY WHERE WE CAN REMOVE A SELECTED MARKER
+function getMarkersByMapId(id, callback) {
+  //// TOOOOOOTALLY hardcoded cheating bullshit
+  if (cheating_marker_data[id]) {
+    callback(null, cheating_marker_data[id]);
+  } else {
+    callback("is no datas");
+  }
+}
+
+function loadMapById(id) {
+  clearMarkers();
+  getMarkersByMapId(id, (err, data) => {
+    if (err) {
+      console.log("ha ha ha, not loading that shit, u r dum", err);
+      return;
+    }
+    // data is an array of marker objects
+    for (var i = 0; i < data.length; i++) {
+      var marker = data[i];
+      addMarker(marker.lat, marker.lng);
+    }
+  })
+}
