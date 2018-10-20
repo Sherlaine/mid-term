@@ -3,23 +3,17 @@
 const express = require('express');
 const router  = express.Router();
 
-const markers =
+const favorites =
   [{
     id: 1,
     map_id: 1,
-    lat: 70,
-    lng: 40,
-    description: "The dumpster's behind La Croix Bakery host a plethora of delectable delicacies."
+    user_id: 1
   }]
 
 module.exports = () => {
   router.get("/", (req, res) => {
-    res.send(markers);
+    res.send(favorites);
   });
 
   return router;
 }
-
-
-
-
