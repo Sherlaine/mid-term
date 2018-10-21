@@ -1,3 +1,7 @@
+// $(function(){
+//   initMap();
+// });
+
 // Global Variables. May need to refactor this code (refer to Spencer's explanation)
 let searchLocation;
 let map;

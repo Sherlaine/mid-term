@@ -8,12 +8,16 @@ $(document).ready(function () {
       $("<div>").text(user.name).appendTo($("body"));
     }
   });;
-
- 
 });
 $('button#dumpster-heaven').on('click', function (lat, long) {
   console.log("dumpster button works")
 } )
+
+// $("#add").on("click", function(event) {
+//   event.preventDefault()
+//   console.log("HEY YO!!!")
+// })
+
 // $(function addMarkerToMap() {
 //   $('button.add').on('click', function (lat, long) {
 //     // Proof that button works, will show in console
