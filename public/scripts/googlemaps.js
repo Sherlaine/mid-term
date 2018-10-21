@@ -68,12 +68,13 @@ function addMarker(lat, lng) {
   console.log("clicked add button");
   console.log("adding a marker at ", lat, lng);
   // from Hafiz, test for the getserver function
-  // sendMarkerToServer({
-  //   lat,
-  //   lng,
-  //   map_id: 1,
-  //   description: 'this is not real description'
-  // });
+  sendMarkerToServer({
+    lat,
+    lng,
+    map_id: 1,
+    description: 'this is not real description'
+  });
+
   var marker = new google.maps.Marker({
     position: {
       lat,
@@ -86,11 +87,11 @@ function addMarker(lat, lng) {
 }
 
 // to add marker when Dumpster Haven button is clicked
-function addDumpster() {
-  console.log("dumpster button works")
-  console.log(doorIsOpen.lat, doorIsOpen.lng)
-  addMarker(doorIsOpen.lat, doorIsOpen.lng)
-}
+// function addDumpster() {
+//   console.log("dumpster button works")
+//   console.log(doorIsOpen.lat, doorIsOpen.lng)
+//   addMarker(doorIsOpen.lat, doorIsOpen.lng)
+// }
 
 function sendMarkerToServer(markerData) {
   $.post('http://localhost:8080/api/markers', markerData)
