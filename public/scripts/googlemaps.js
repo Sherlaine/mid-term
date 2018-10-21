@@ -67,6 +67,13 @@ $(function addMarkerToMap() {
 function addMarker(lat, lng) {
   console.log("clicked add button");
   console.log("adding a marker at ", lat, lng);
+  // from Hafiz, test for the getserver function
+  // sendMarkerToServer({
+  //   lat,
+  //   lng,
+  //   map_id: 1,
+  //   description: 'this is not real description'
+  // });
   var marker = new google.maps.Marker({
     position: {
       lat,
@@ -85,7 +92,12 @@ function addDumpster() {
   addMarker(doorIsOpen.lat, doorIsOpen.lng)
 }
 
-
+function sendMarkerToServer(markerData) {
+  $.post('http://localhost:8080/api/markers', markerData)
+    .then(function (response) {
+    console.log(response)
+  })
+}
 
 function clearMarkers() {
   for(var i = 0; i < allMyMarkers.length; i++) {

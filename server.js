@@ -10,6 +10,8 @@ const sass        = require("node-sass-middleware");
 const app         = express();
 
 const knexConfig  = require("./knexfile");
+// This initializes our connection to the database
+// We get a connection object in return called KNEX
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
@@ -42,16 +44,16 @@ app.use(express.static("public"));
 // app.use("/api/users", usersRoutes(knex));
 
 // import marker routes
-app.use("/api/markers", markerRoutes());
+app.use("/api/markers", markerRoutes(knex));
 
 // import map routes
-app.use("/api/maps", mapRoutes());
+app.use("/api/maps", mapRoutes(knex));
 
 // import user routes
-app.use("/api/users", userRoutes());
+app.use("/api/users", userRoutes(knex));
 
 // import favorite routes
-app.use("/api/favorites", favRoutes());
+app.use("/api/favorites", favRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const mapsModelFunction = require('../models/mapmodels');
 
 const maps =
   [{
@@ -10,14 +11,19 @@ const maps =
     title: 'Bakeries'
   }]
 
-module.exports = () => {
+module.exports = (knex) => {
+  if (!knex) throw new Error('We definitely knex!');
+  const mapsModel = mapsModelFunction(knex)
+  // get some params from request
+  // fetch from the database
+  // send the result back
   router.get("/", (req, res) => {
-    res.send(maps);
+    const mapsWithMarkers = mapsModel.getMapsWithMarkers();
+    return mapsWithMarkers.then(maps => {
+      console.log("maps is here", maps);
+      res.json(maps)
+    })
   });
 
   return router;
-}
-
-
-
-
+};
