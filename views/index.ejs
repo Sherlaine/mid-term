@@ -75,90 +75,97 @@
 
 
   <!-- About Section -->
-  <section id="about" class="about-section text-center">
+  <section id="about" class="about-section">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">About</h2>
-          <p class="text-white-50">Freeganism is a practice and ideology participation in the conventional economy and
-            minimal consumption of resources, particularly through recovering wasted goods like food. The word
-            "freegan" is a portmanteau of "free" and "vegan". <br> The average Canadian consumer throws out an
-            estimated 170 kilograms of food a year. This ends up going to landfills - when it should instead be feeding
-            communities in need of these resources. With Food Rescue, we hope to reduce our food wastage by suppoting
-            communities with our application.</p>
+      <div class="row align-items-top mb-4 mb-lg-5">
+        <div class="col-xl-3 col-lg-4 col-xl-5">
+          <div class="featured-text text-center text-lg-left">
+            <h2 class="text-white mb-4">About</h2>
+            <p class="text-white-50">Freeganism is a practice and ideology participation in the conventional economy
+              and
+              minimal consumption of resources, particularly through recovering wasted goods like food. The word
+              "freegan" is a portmanteau of "free" and "vegan". <br> The average Canadian consumer throws out an
+              estimated 170 kilograms of food a year. This ends up going to landfills - when it should instead be
+              feeding
+              communities in need of these resources. With Food Rescue, we hope to reduce our food wastage by
+              suppoting
+              communities with our application.</p>
+          </div>
+        </div>
+
+        <div class="col-xl-7 col-lg-9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/gkbOpCRyKvQ" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/gkbOpCRyKvQ" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen></iframe>
-
     </div>
   </section>
 
   <!-- Map Section -->
   <section id="projects" class="projects-section bg-light">
     <div class="container">
-      <!-- Featured Map -->
-      
-        <div class="row align-items-top no-gutters mb-4 mb-lg-5">
-          <div class="project-text w-100 my-auto text-center text-lg-right">
-          </div>
-          <div class="col-xl-4 col-lg-5">
-            <div class="featured-text text-center text-lg-left">
+      <!-- List Section -->
+      <div class="row align-items-top mb-4 mb-lg-5">
+        <div class="col-xl-3 col-lg-4 col-xl-5">
+          <div class="featured-text text-center text-lg-left">
             <h4>Your Maps</h4>
-
+            <!-- Will populate lists here-->
             <section id="your-maps">
               <ol>
                 <li>
-                  <button class="btn btn-primary mx-auto">Dumpster Heaven</button>
+                  <button id="dumpster-heaven" class="btn btn-primary mx-auto">Dumpster Heaven</button>
                 </li>
-              </ol>  
+              </ol>
               <br>
+              <form class="form-inline d-flex">
+                <input id="new-map" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="Create New Map">
+                <button id="create-map" class="btn ban-primary mx-auto">Create</button>
+              </form>
             </section>
           </div>
-      
-      <br>
-      <!-- Other Lists that we leave here -->
-        <div class="featured-text text-center text-lg-left">
-          <h4>Other Freegan's Maps</h4>
-          <ol>
-            <li>
-              <button id="vegan-janet" class="btn btn-primary mx-auto">Vegan Janet</button>
-            </li>
-            <br>
-            <li>
-              <button id="trash-panda" class="btn btn-primary mx-auto">Trash Panda Bliss</button>
-            </li>
-          </ol>
-        </div>
-        <br>
-        <div class="featured-text text-center text-lg-left">
-          <h4>Favourite Maps</h4>
-          <ol>
-            <li>
-              <button id="east-van" class="btn btn-primary mx-auto">East Van Dump Life</button>
-            </li>
-            <br>
-            <li>
-              <button id="gastown-trash" class="btn btn-primary mx-auto">Gastown Trash Party</button>
-            </li>
-          </ol>
-        </div>
-    </div>
 
-    <!-- Google MAP API and buttons -->
+          <br>
+          <!-- Other Lists that are here permanently -->
+          <div class="featured-text text-center text-lg-left">
+            <h4>Other Freegan's Maps</h4>
+            <ol>
+              <li>
+                <button id="vegan-janet" class="btn btn-primary mx-auto">Vegan Janet</button>
+              </li>
+              <li>
+                <button id="trash-panda" class="btn btn-primary mx-auto">Trash Panda Bliss</button>
+              </li>
+            </ol>
+          </div>
+          <div class="featured-text text-center text-lg-left">
+            <h4>Favourite Maps</h4>
+            <ol>
+              <li>
+                <button id="east-van" class="btn btn-primary mx-auto">East Van Dump Life</button>
+              </li>
+              <li>
+                <button id="gastown-trash" class="btn btn-primary mx-auto">Gastown Trash Party</button>
+              </li>
+            </ol>
+          </div>
+        </div>
 
-    <div class="col-xl-8 col-lg-7">
-      <h4 class="title-map">Your Map Name</h4>
-      <form class="form-inline d-flex">
-        <input id="pac-input" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="search">
-        <button id="add" class="btn ban-primary mx-auto">Add Point</button>
-        <button id="remove" class="btn ban-primary mx-auto">Remove Point</button>
-      </form>
-      <div id="map">
+        <!-- Google MAP API and buttons -->
+
+        <div class="map-section col-xl-7 col-lg-9">
+          <h4 class="title-map">Your Map Name</h4>
+          <form class="form-inline d-flex">
+            <input id="pac-input" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="Search">
+            <button id="add" class="btn ban-primary mx-auto">Add Point</button>
+            <button id="remove" class="btn ban-primary mx-auto">Remove Point</button>
+          </form>
+          <div id="map">
+          </div>
+          <button id="save" class="btn ban-primary mx-auto">Save Map</button>
+          <button id="delete" class="btn ban-primary mx-auto">Delete Map</button>
+        </div>
       </div>
-      <button id="delete" class="btn ban-primary mx-auto">Delete Map</button>
-    </div>
-    </div>
     </div>
   </section>
 
@@ -256,9 +263,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="scripts/grayscale.min.js"></script>
-
-
-
 </body>
 
 </html>

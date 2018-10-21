@@ -1,21 +1,8 @@
-// Global Variables. May need to refactor this code (refer to Spencer's explanation)
 let searchLocation;
 let map;
-let allMyMarkers = [];
+let allMyMarkers = []; // used in clearMarkers
 
-
-var cheating_marker_data = {
-  3: [
-    { lat: 49.240292, lng: -123.146226 },
-    { lat: 49.200292, lng: -123.186226 },
-  ],
-  4: [
-    { lat: 49.282622, lng: -123.095606 },
-  ]
-}
-
-
-// Initialize and add the map
+// Initialize map and focus on Vancouver
 function initMap() {
   const vancouver = {
     lat: 49.246292,
@@ -29,7 +16,8 @@ function initMap() {
   );
 
   // Search box and input
-  let input = document.getElementById('pac-input');
+  let input = document.getElementById('pac-input'); 
+  // creates the search box and links to the UI element
   let searchBox = new google.maps.places.SearchBox(input);
 
   // Event listener that saves coordinates to searchLocation upon selecting a destination
@@ -43,47 +31,44 @@ function initMap() {
     console.log('location lat', location.lat());
     console.log('location lng', location.lng());
 
-    // Search coordinates stored in this variable
+    // Search COORDINATES STORED in this variable
     searchLocation = [location.lat(), location.lng()];
   });
 }
 
 // Function that posts marker to map when button is clicked
+// This Function works on the CLICKING OF "ADD BUTTON ----"
 $(function addMarkerToMap() {
-    $('button#add').on('click', function (lat, long) {
-      // Proof that button works, will show in console
-      console.log('will try to add point');
+    $('button#add').on('click', function (event, lat, long) {
+      event.preventDefault();
 
-      console.log(addMarker);
+      // Proof that button works, will show in console
+      //console.log('This is a test button will try to add point');
+
+      //console.log(addMarker);
       // Adds marker when button is clicked
+      //IT ACTUALY PLACES THE MARKER ON THE MAP
       addMarker(searchLocation[0], searchLocation[1]);
     })
-
-    $('button#dumpster-heaven').on('click', function () {
-      loadMapById(3);
-    })
-    $('button#bakery').on('click', function () {
-      loadMapById(4);
-    })
-    $('button#restaurants').on('click', function () {
-      loadMapById(5);
-    })
+  $('button#vegan-janet').on('click', function () {
+    janetDumpster()
+  })
+  $('button#east-van').on('click', function () {
+    eastVanDumpster()
+  })
 })
 
-
-const doorIsOpen = {
-  lat: 49.282622,
-  lng: -123.095606
-};
-
-function addDumpster() {
-  console.log("dumpster button works")
-  console.log(doorIsOpen.lat, doorIsOpen.lng)
-  addMarker(doorIsOpen.lat, doorIsOpen.lng)
-}
-
+// provides lat and long to add marker to addMarkerToMap function
 function addMarker(lat, lng) {
+  console.log("clicked add button");
   console.log("adding a marker at ", lat, lng);
+  // from Hafiz, test for the getserver function
+  sendMarkerToServer({
+    lat,
+    lng,
+    map_id: 1,
+    description: 'this is not real description'
+  });
   var marker = new google.maps.Marker({
     position: {
       lat,
@@ -91,36 +76,69 @@ function addMarker(lat, lng) {
     },
     map: map,
   });
-  allMyMarkers.push(marker);
+  // allMyMarkers.push(marker);
+  marker.setMap(map)
 }
 
-// REMOVE A SELECTED MARKER
+function sendMarkerToServer(markerData) {
+  $.post('http://localhost:8080/api/markers', markerData)
+    .then(function (response) {
+    console.log(response)
+  })
+}
+
+//clears marker on current map
 function clearMarkers() {
   for(var i = 0; i < allMyMarkers.length; i++) {
     allMyMarkers[i].setMap(null);
   }
+  console.log("is this working", clearMarkers)
 }
 
-function getMarkersByMapId(id, callback) {
-  //// TOOOOOOTALLY hardcoded cheating bullshit
-  if (cheating_marker_data[id]) {
-    callback(null, cheating_marker_data[id]);
-  } else {
-    callback("is no datas");
-  }
+//hard coded databases 
+const doorIsOpen = {
+  lat: 49.282622,
+  lng: -123.095606
 }
 
-function loadMapById(id) {
-  clearMarkers();
-  getMarkersByMapId(id, (err, data) => {
-    if (err) {
-      console.log("ha ha ha, not loading that shit, u r dum", err);
-      return;
-    }
-    // data is an array of marker objects
-    for (var i = 0; i < data.length; i++) {
-      var marker = data[i];
-      addMarker(marker.lat, marker.lng);
-    }
-  })
+const metrotown = {
+  lat:49.2276257,
+  lng: -123.00757570000002
 }
+
+const kerrisdale = {
+  lat: 49.2331436,
+  lng: -123.15672689999997
+}
+
+const pne ={
+  lat: 49.28251499999999, 
+  lng: -123.0429992
+}
+
+const ubc ={
+  lat: 49.26060520000001,  
+  lng:-123.24599380000001
+}
+
+const marpole = {
+  lat: 49.21072400000001,
+  lng: -123.13018699999998
+}
+
+// to add marker when vegan janet button is clicked
+function janetDumpster() {
+  console.log(doorIsOpen.lat, doorIsOpen.lng)
+  addMarker(doorIsOpen.lat, doorIsOpen.lng);
+  addMarker(metrotown.lat, metrotown.lng);
+  addMarker(kerrisdale.lat, kerrisdale.lng)
+}
+
+function eastVanDumpster(){
+  addMarker(pne.lat, pne.lng);
+  addMarker(ubc.lat, ubc.lng);
+  addMarker(marpole.lat, marpole.lng);
+}
+
+
+
