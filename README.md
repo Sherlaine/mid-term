@@ -10,6 +10,16 @@
 5. Push to the new origin: `git push -u origin master`
 6. Verify that the skeleton code now shows up in your repo on GitHub
 
+## Final Application - Food Rescue 
+!["Screenshot of landing page"]
+!["Screenshot of the about page"]
+!["Screenshot of markers connected to the database"]
+!["Screenshot of create new list"]
+!["Screenshot of add point on list"]
+!["Screenshot of point added on list"]
+!["Screenshot of delete point on list"]
+!["Screenshot of footer"]
+
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`

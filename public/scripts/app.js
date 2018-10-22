@@ -19,8 +19,9 @@ $(document).ready(function () {
   });
 
   function createMapList(data) {
-    const $listItem = $("<button>").addClass("btn btn-primary mx-auto").text(data)
-    $('.customList').append($listItem)
+    const $numberItem = $("<li>")
+    const $listItem = $("<button>").addClass("btn btn-primary mx-auto").text(data);
+    $('.customList').append($numberItem, $listItem)
 
   }
 });

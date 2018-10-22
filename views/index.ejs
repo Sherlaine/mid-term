@@ -26,11 +26,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 
-  <!-- Google Maps API-->
-<!--   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS9O21Vg-r_HgnBpZBA_U2KxjhK-RoDms&callback=initMap&libraries=places"></script> -->
-
-  <!-- External JS  -->
-
   <!-- External APP JS  -->
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
@@ -112,16 +107,16 @@
             <h4>Your Maps</h4>
             <!-- Will populate lists here-->
             <section id="your-maps">
-              <ol class="customList">
-                <li>
-                  <button class="btn btn-primary mx-auto" id="dumpster-heaven">Dumpster Heaven</button>
-                </li>
-              </ol>
-              <br>
               <form class="form-inline d-flex">
                 <input id="new-map" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="Create New Map">
                 <button id="create-map" type="submit" class="btn ban-primary mx-auto">Create</button>
               </form>
+              <br>
+              <ol class="customList">
+                  <li>
+                    <button class="btn btn-primary mx-auto" id="dumpster-heaven">Dumpster Heaven</button>
+                  </li>
+                </ol>
             </section>
           </div>
 
@@ -154,7 +149,7 @@
         <!-- Google MAP API and buttons -->
 
         <div class="map-section col-xl-7 col-lg-9">
-          <h4 class="title-map">Your Map Name</h4>
+          <h4>Be a Hero, Save the Food!</h4>
           <form class="form-inline d-flex">
             <input id="pac-input" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="Search">
             <button id="add" class="btn ban-primary mx-auto">Add Point</button>
