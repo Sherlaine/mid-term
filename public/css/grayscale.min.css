@@ -3,6 +3,12 @@
  * Copyright 2013-2018 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
+
+/*to remove the indentation of the buttons*/
+ol {
+  list-style: none;
+  padding-left: 0;
+}
 #mainNav {
   min-height: 56px;
   background-color: #fff
@@ -348,5 +354,5 @@ iframe {
 }
 
 #pac-input {
-  width: 45%;
+  width: 10%;
 }
