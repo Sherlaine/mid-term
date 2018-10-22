@@ -33,6 +33,8 @@
   <!-- External JS  -->
   <script type="text/javascript" src="/scripts/googlemaps.js"></script>
 
+  <!-- External APP JS  -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 
 <body id="page-top">
@@ -112,15 +114,15 @@
             <h4>Your Maps</h4>
             <!-- Will populate lists here-->
             <section id="your-maps">
-              <ol>
+              <ol class="customList">
                 <li>
-                  <button id="dumpster-heaven" class="btn btn-primary mx-auto">Dumpster Heaven</button>
+                  <button class="btn btn-primary mx-auto">Dumpster Heaven</button>
                 </li>
               </ol>
               <br>
               <form class="form-inline d-flex">
                 <input id="new-map" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" type="text" placeholder="Create New Map">
-                <button id="create-map" class="btn ban-primary mx-auto">Create</button>
+                <button id="create-map" type="submit" class="btn ban-primary mx-auto">Create</button>
               </form>
             </section>
           </div>

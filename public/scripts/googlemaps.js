@@ -16,7 +16,7 @@ function initMap() {
   );
 
   // Search box and input
-  let input = document.getElementById('pac-input'); 
+  let input = document.getElementById('pac-input');
   // creates the search box and links to the UI element
   let searchBox = new google.maps.places.SearchBox(input);
 
@@ -39,17 +39,17 @@ function initMap() {
 // Function that posts marker to map when button is clicked
 // This Function works on the CLICKING OF "ADD BUTTON ----"
 $(function addMarkerToMap() {
-    $('button#add').on('click', function (event, lat, long) {
-      event.preventDefault();
+  $('button#add').on('click', function (event, lat, long) {
+    event.preventDefault();
 
-      // Proof that button works, will show in console
-      //console.log('This is a test button will try to add point');
+    // Proof that button works, will show in console
+    //console.log('This is a test button will try to add point');
 
-      //console.log(addMarker);
-      // Adds marker when button is clicked
-      //IT ACTUALY PLACES THE MARKER ON THE MAP
-      addMarker(searchLocation[0], searchLocation[1]);
-    })
+    //console.log(addMarker);
+    // Adds marker when button is clicked
+    //IT ACTUALY PLACES THE MARKER ON THE MAP
+    addMarker(searchLocation[0], searchLocation[1]);
+  })
   $('button#vegan-janet').on('click', function () {
     janetDumpster()
   })
@@ -75,6 +75,7 @@ function addMarker(lat, lng) {
       lng
     },
     map: map,
+    icon: 'https://media.giphy.com/media/udOUmtMweG2kg/giphy.gif',
   });
   // allMyMarkers.push(marker);
   marker.setMap(map)
@@ -83,13 +84,13 @@ function addMarker(lat, lng) {
 function sendMarkerToServer(markerData) {
   $.post('http://localhost:8080/api/markers', markerData)
     .then(function (response) {
-    console.log(response)
-  })
+      console.log(response)
+    })
 }
 
 //clears marker on current map
 function clearMarkers() {
-  for(var i = 0; i < allMyMarkers.length; i++) {
+  for (var i = 0; i < allMyMarkers.length; i++) {
     allMyMarkers[i].setMap(null);
   }
   console.log("is this working", clearMarkers)
@@ -102,7 +103,7 @@ const doorIsOpen = {
 }
 
 const metrotown = {
-  lat:49.2276257,
+  lat: 49.2276257,
   lng: -123.00757570000002
 }
 
@@ -111,14 +112,14 @@ const kerrisdale = {
   lng: -123.15672689999997
 }
 
-const pne ={
-  lat: 49.28251499999999, 
+const pne = {
+  lat: 49.28251499999999,
   lng: -123.0429992
 }
 
-const ubc ={
-  lat: 49.26060520000001,  
-  lng:-123.24599380000001
+const ubc = {
+  lat: 49.26060520000001,
+  lng: -123.24599380000001
 }
 
 const marpole = {
@@ -134,11 +135,8 @@ function janetDumpster() {
   addMarker(kerrisdale.lat, kerrisdale.lng)
 }
 
-function eastVanDumpster(){
+function eastVanDumpster() {
   addMarker(pne.lat, pne.lng);
   addMarker(ubc.lat, ubc.lng);
   addMarker(marpole.lat, marpole.lng);
 }
-
-
-
