@@ -11,14 +11,14 @@
 6. Verify that the skeleton code now shows up in your repo on GitHub
 
 ## Final Application - Food Rescue 
-!["Screenshot of landing page"]
-!["Screenshot of the about page"]
-!["Screenshot of markers connected to the database"]
-!["Screenshot of create new list"]
-!["Screenshot of add point on list"]
-!["Screenshot of point added on list"]
-!["Screenshot of delete point on list"]
-!["Screenshot of footer"]
+!["Screenshot of landing page"] (https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/1.%20Landing.png)
+!["Screenshot of the about page"] (https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/2.%20About.png)
+!["Screenshot of markers connected to the database"](https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/3.%20List%20connected%20to%20Database.png)
+!["Screenshot of create new list"](https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/4.%20Create%20New%20List.png)
+!["Screenshot of add point on list"](https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/5.%20Add%20point%20on%20list.png)
+!["Screenshot of point added on list"](https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/6.%20Point%20Added%20on%20list.png)
+!["Screenshot of delete point on list"](https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/7.%20Delete%20point%20on%20list.png)
+!["Screenshot of footer"](https://github.com/Sherlaine/mid-term/blob/master/public/screenshots/8.Footer.png)
 
 ## Getting Started
 
