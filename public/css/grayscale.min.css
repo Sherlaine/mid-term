@@ -335,14 +335,17 @@ footer {
   padding: 5rem 0
 }
 
+iframe {
+  padding-left: 15%;
+}
+
+
 #map {
   width: 100%;
   height: 400px;
   background-color: grey;
-}
-
-iframe {
-  padding-left: 15%;
+  min-height: 30rem;
+  overflow: visible;
 }
 
 #pac-input {

@@ -10,10 +10,11 @@ function initMap() {
   };
   map = new google.maps.Map(
     document.getElementById('map'), {
-      zoom: 11,
+      zoom: 9,
       center: vancouver
     }
   );
+
 
   // Search box and input
   let input = document.getElementById('pac-input');
@@ -36,6 +37,8 @@ function initMap() {
   });
 }
 
+
+
 // a location called Door Is Open to use to test marker functions below
 // replace with dynamic code
 const doorIsOpen = {
@@ -57,93 +60,121 @@ $(function addMarkerToMap() {
     //IT ACTUALY PLACES THE MARKER ON THE MAP
     addMarker(searchLocation[0], searchLocation[1]);
   })
+  $('button#dumpster-heaven').on('click', function () {
+  })
+  
   $('button#vegan-janet').on('click', function () {
     janetDumpster()
   })
+
   $('button#east-van').on('click', function () {
     eastVanDumpster()
+
   })
-})
 
-// provides lat and long to add marker to addMarkerToMap function
-function addMarker(lat, lng) {
-  console.log("clicked add button");
-  console.log("adding a marker at ", lat, lng);
-  // from Hafiz, test for the getserver function
-  sendMarkerToServer({
-    lat,
-    lng,
-    map_id: 1,
-    description: 'this is not real description'
-  });
-  var marker = new google.maps.Marker({
-    position: {
-      lat,
-      lng
-    },
-    map: map,
-    icon: 'https://media.giphy.com/media/udOUmtMweG2kg/giphy.gif',
-  });
-  // allMyMarkers.push(marker);
-  marker.setMap(map)
-}
+  $('#dumpster-heaven').on('click', (event) => {
+    let mapId = 1;
+    console.log('hi');
+    $.ajax('/maps/dumpsterHeaven/show', {
+      method: "GET",
+      data: {
+        map_id: mapId
+      },
+      success: (val) => {
+        let markers = val.markers;
+        markers.forEach((marker) => {
+          showMarker(marker.lat, marker.lng);
+        });
+      }
 
-function sendMarkerToServer(markerData) {
-  $.post('http://localhost:8080/api/markers', markerData)
-    .then(function (response) {
-      console.log(response)
     })
-}
+  })
 
-//clears marker on current map
-function clearMarkers() {
-  for (var i = 0; i < allMyMarkers.length; i++) {
-    allMyMarkers[i].setMap(null);
+  // provides lat and long to add marker to addMarkerToMap function
+  function addMarker(lat, lng) {
+    console.log("clicked add button");
+    console.log("adding a marker at ", lat, lng);
+    // from Hafiz, test for the getserver function
+    sendMarkerToServer({
+      lat,
+      lng,
+      map_id: 1,
+      description: 'this is not real description'
+    });
   }
-  console.log("is this working", clearMarkers)
-}
 
-//hard coded databases 
-const doorIsOpen = {
-  lat: 49.282622,
-  lng: -123.095606
-}
+  function showMarker(lat, lng) {
+    var marker = new google.maps.Marker({
+      position: {
+        lat,
+        lng
+      },
+      map: map,
+      icon: 'https://media.giphy.com/media/udOUmtMweG2kg/giphy.gif',
+    });
+    allMyMarkers.push(marker);
 
-const metrotown = {
-  lat: 49.2276257,
-  lng: -123.00757570000002
-}
+    marker.setMap(map)
+  }
 
-const kerrisdale = {
-  lat: 49.2331436,
-  lng: -123.15672689999997
-}
 
-const pne = {
-  lat: 49.28251499999999,
-  lng: -123.0429992
-}
+  function sendMarkerToServer(markerData) {
+    $.post('http://localhost:8080/api/markers', markerData)
+      .then(function (response) {
+        console.log(response)
+      })
+  }
 
-const ubc = {
-  lat: 49.26060520000001,
-  lng: -123.24599380000001
-}
+  //clears marker on current map
+  function clearMarkers() {
+    for (var i = 0; i < allMyMarkers.length; i++) {
+      allMyMarkers[i].setMap(null);
+    }
+    console.log("is this working", clearMarkers)
+  }
 
-const marpole = {
-  lat: 49.21072400000001,
-  lng: -123.13018699999998
-}
+  //hard coded databases 
+  const doorIsOpen = {
+    lat: 49.282622,
+    lng: -123.095606
+  }
 
-// to add marker when vegan janet button is clicked
-function janetDumpster() {
-  console.log(doorIsOpen.lat, doorIsOpen.lng)
-  addMarker(doorIsOpen.lat, doorIsOpen.lng);
-  addMarker(metrotown.lat, metrotown.lng);
-  addMarker(kerrisdale.lat, kerrisdale.lng)
-}
+  const metrotown = {
+    lat: 49.2276257,
+    lng: -123.00757570000002
+  }
 
-function eastVanDumpster() {
-  addMarker(pne.lat, pne.lng);
-  addMarker(ubc.lat, ubc.lng);
-  addMarker(marpole.lat, marpole.lng);
-}
+  const kerrisdale = {
+    lat: 49.2331436,
+    lng: -123.15672689999997
+  }
+
+  const pne = {
+    lat: 49.28251499999999,
+    lng: -123.0429992
+  }
+
+  const ubc = {
+    lat: 49.26060520000001,
+    lng: -123.24599380000001
+  }
+
+  const marpole = {
+    lat: 49.21072400000001,
+    lng: -123.13018699999998
+  }
+
+  // to add marker when vegan janet button is clicked
+  function janetDumpster() {
+    console.log(doorIsOpen.lat, doorIsOpen.lng)
+    addMarker(doorIsOpen.lat, doorIsOpen.lng);
+    addMarker(metrotown.lat, metrotown.lng);
+    addMarker(kerrisdale.lat, kerrisdale.lng)
+  }
+
+  function eastVanDumpster() {
+    addMarker(pne.lat, pne.lng);
+    addMarker(ubc.lat, ubc.lng);
+    addMarker(marpole.lat, marpole.lng);
+  }
+});

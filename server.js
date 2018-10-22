@@ -60,6 +60,22 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+function getMapMakers(mapId){
+  return knex('maps')
+  .join('markers','maps.id','=','map_id')
+  .select('markers.id','markers.lat','markers.lng')
+  .where('maps.id',1)
+}
+
+app.get('/maps/dumpsterHeaven/show', (req,res) => {
+  let mapId = req.body.map_id;
+  getMapMakers(mapId)
+  .then((result) => {
+    res.status(201);
+    res.json({markers:result})
+  })
+})
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
