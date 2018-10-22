@@ -2,7 +2,7 @@ let searchLocation;
 let map;
 let allMyMarkers = []; // used in clearMarkers
 
-// Initialize map and focus on Vancouver
+// Initialize and add the map
 function initMap() {
   const vancouver = {
     lat: 49.246292,
@@ -35,6 +35,13 @@ function initMap() {
     searchLocation = [location.lat(), location.lng()];
   });
 }
+
+// a location called Door Is Open to use to test marker functions below
+// replace with dynamic code
+const doorIsOpen = {
+  lat: 49.282622,
+  lng: -123.095606
+};
 
 // Function that posts marker to map when button is clicked
 // This Function works on the CLICKING OF "ADD BUTTON ----"

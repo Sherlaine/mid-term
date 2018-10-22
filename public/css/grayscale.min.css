@@ -159,7 +159,7 @@
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: .15rem;
-  border:0
+  border: 0
 }
 
 .btn-primary {
@@ -195,6 +195,7 @@
 .ban-primary:active {
   background-color: #467370 !important
 }
+
 .about-section {
   padding-top: 10rem;
   background: -webkit-gradient(linear, left top, left bottom, from(#161616), color-stop(75%, rgba(22, 22, 22, .9)), to(rgba(22, 22, 22, .8)));
@@ -340,7 +341,10 @@ footer {
   background-color: grey;
 }
 
-iframe{
+iframe {
   padding-left: 15%;
 }
 
+#pac-input {
+  width: 45%;
+}
