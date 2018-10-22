@@ -1,22 +1,26 @@
 $(document).ready(function () {
+  
+  function getContent(users) {
+    $.ajax('/api/users')
+      .then((users) => {
+        console.log(users, "users")
+        for (user of users) {
+          $("<section>").text(user.name).appendTo($("body"));
+          console.log('user', user)
+        }
+      });
+  };
 
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for (user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
+
+  $('button#create-map').on("click", function (e) {
+    e.preventDefault();
+    let input = $('#new-map').val()
+    createMapList(input)
   });
+
+  function createMapList(data) {
+    const $listItem = $("<button>").addClass("btn btn-primary mx-auto").text(data)
+    $('.customList').append($listItem)
+
+  }
 });
-
-// DATA VARIABLES 
-
-
-// STRUCTURE OF YOUR MAPS SECTION 
-
-const $yourMaps    = $("<section>").attr("id", "your-maps");
-const $orderedList = $("<ol>").appendTo($yourMaps);
-const $list = $("<li>").appendTo($orderedList);
-const $map = $("<button>").addClass("btn btn-primary mx-auto").appendTo($list);
-const $lineBreak = $("<br>").appendTo($yourMaps);
