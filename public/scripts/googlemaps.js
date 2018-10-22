@@ -42,29 +42,42 @@ function initMap() {
 $(function addMarkerToMap() {
   $('button#add').on('click', function (event, lat, long) {
     event.preventDefault();
-
-    // Proof that button works, will show in console
-    //console.log('This is a test button will try to add point');
-
-    //console.log(addMarker);
     // Adds marker when button is clicked
     //IT ACTUALY PLACES THE MARKER ON THE MAP
     addMarker(searchLocation[0], searchLocation[1]);
   })
 
   $('button#dumpster-heaven').on('click', function () {
-
+    clearMarkers();
   })
 
   $('button#vegan-janet').on('click', function () {
+    clearMarkers();
     janetDumpster()
   })
 
   $('button#east-van').on('click', function () {
+    clearMarkers();
     eastVanDumpster()
   })
 
 });
+
+//clears marker on current map
+function clearMarkers() {
+  for (var i = 0; i < allMyMarkers.length; i++) {
+    allMyMarkers[i].setMap(null);
+  }
+  console.log("is this working", clearMarkers)
+}
+
+
+$('button#remove').on('click', function (event) {
+  event.preventDefault();
+  for (var i = 0; i < allMyMarkers.length; i++) {
+    allMyMarkers[i].setMap(null);
+  }
+})
 
 $('#dumpster-heaven').on('click', (event) => {
   let mapId = 1;
@@ -130,14 +143,6 @@ function sendMarkerToServer(markerData) {
     })
 }
 
-//clears marker on current map
-function clearMarkers() {
-  for (var i = 0; i < allMyMarkers.length; i++) {
-    allMyMarkers[i].setMap(null);
-  }
-  console.log("is this working", clearMarkers)
-}
-
 //hard coded databases 
 const doorIsOpen = {
   lat: 49.282622,
@@ -171,6 +176,7 @@ const marpole = {
 
 // to add marker when vegan janet button is clicked
 function janetDumpster() {
+  clearMarkers();
   console.log(doorIsOpen.lat, doorIsOpen.lng)
   addMarker(doorIsOpen.lat, doorIsOpen.lng);
   addMarker(metrotown.lat, metrotown.lng);
