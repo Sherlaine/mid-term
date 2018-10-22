@@ -8,6 +8,11 @@ li {
   list-style: none;
 }
 
+ol {
+  list-style: none;
+  padding-left: 0;
+}​
+
 #mainNav {
   min-height: 56px;
   background-color: #fff
@@ -353,5 +358,5 @@ iframe {
 }
 
 #pac-input {
-  width: 45%;
+  width: 10%;
 }
