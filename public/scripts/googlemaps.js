@@ -1,3 +1,7 @@
+
+
+
+
 // Global Variables. May need to refactor this code (refer to Spencer's explanation)
 let searchLocation;
 let map;
@@ -11,10 +15,11 @@ function initMap() {
   };
   map = new google.maps.Map(
     document.getElementById('map'), {
-      zoom: 11,
+      zoom: 9,
       center: vancouver
     }
   );
+
 
   // Search box and input
   let input = document.getElementById('pac-input'); // creates the search box and links to the UI element
@@ -35,6 +40,8 @@ function initMap() {
     searchLocation = [location.lat(), location.lng()];
   });
 }
+
+
 
 // a location called Door Is Open to use to test marker functions below
 // replace with dynamic code
@@ -58,7 +65,27 @@ $(function addMarkerToMap() {
       addMarker(searchLocation[0], searchLocation[1]);
     })
   $('button#dumpster-heaven').on('click', function () {
-    addDumpster()
+
+
+
+    })
+})
+
+$('#dumpster-heaven').on('click', (event) => {
+  let mapId = 1;
+  console.log('hi');
+  $.ajax('/maps/dumpsterHeaven/show', {
+    method: "GET",
+    data: {
+      map_id: mapId
+    },
+    success: (val) => {
+      let markers = val.markers;
+      markers.forEach((marker) => {
+        showMarker(marker.lat,marker.lng);
+      });
+    }
+
   })
 })
 
@@ -68,6 +95,7 @@ function addMarker(lat, lng) {
   console.log("clicked add button");
   console.log("adding a marker at ", lat, lng);
   // from Hafiz, test for the getserver function
+
   sendMarkerToServer({
     lat,
     lng,
@@ -82,7 +110,21 @@ function addMarker(lat, lng) {
     },
     map: map,
   });
-  // allMyMarkers.push(marker);
+  allMyMarkers.push(marker);
+
+  marker.setMap(map)
+}
+
+function showMarker(lat,lng) {
+  var marker = new google.maps.Marker({
+    position: {
+      lat,
+      lng
+    },
+    map: map,
+  });
+  allMyMarkers.push(marker);
+
   marker.setMap(map)
 }
 
